@@ -140,20 +140,8 @@ pre_install(){
         exit 1
     fi
     # Set shadowsocks config password
-    echo "Please input password for shadowsocks-python:"
-    read -p "(Default password: teddysun.com):" shadowsockspwd
-    [ -z "${shadowsockspwd}" ] && shadowsockspwd="teddysun.com"
-    echo
-    echo "---------------------------"
-    echo "password = ${shadowsockspwd}"
-    echo "---------------------------"
-    echo
-    # Set shadowsocks config port
-    while true
-    do
-    echo -e "Please input port for shadowsocks-python [1-65535]:"
-    read -p "(Default port: 8989):" shadowsocksport
-    [ -z "$shadowsocksport" ] && shadowsocksport="8989"
+    shadowsockspwd="teddysun.com"
+    shadowsocksport="8989"
     expr ${shadowsocksport} + 0 &>/dev/null
     if [ $? -eq 0 ]; then
         if [ ${shadowsocksport} -ge 1 ] && [ ${shadowsocksport} -le 65535 ]; then
